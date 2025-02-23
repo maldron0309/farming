@@ -3,16 +3,22 @@ version 42
 __lua__
 function _init()
 	iplr()
+	icrops()
+	
 end
 
 function _update()
 	uplr()
+	ucrops()
+	
 end
 
 function _draw()
 	cls(11)
 	map()
 	dplr()
+	dcrops()
+	
 end
 
 
@@ -50,6 +56,33 @@ end
 
 function dplr()
 	spr(12,plr.x,plr.y)
+end
+-->8
+--nature's way--
+
+function icrops()
+	croptimer=300
+end
+
+function ucrops()
+	if criptimer>0 then
+		croptimer-=1
+	else
+		growcrops()
+		croptimer=300
+	end	
+end
+
+function dcrops()
+	print(croptimer)
+end
+
+function growcrops()
+	for x=0,15 do
+		for y=0,15 do
+			mset(x,y,2)
+		end
+	end
 end
 __gfx__
 000000000000003004444440044444400444444000000000000000000000000000000000000000000000000000000000000c7000000000000000000000000000
