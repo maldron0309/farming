@@ -1,7 +1,9 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
-function _init()
+#include main.lua
+
+unction _init()
 	iplr()
 	icrops()
 	
@@ -49,7 +51,7 @@ function uplr()
 	local pty=(plr.y+7)/8
 	
 	if btnp(❎) then
-		mset(ptx,pty,2)
+		mset(ptx,pty,3)
 	end
 	
 end
@@ -65,7 +67,7 @@ function icrops()
 end
 
 function ucrops()
-	if criptimer>0 then
+	if croptimer>0 then
 		croptimer-=1
 	else
 		growcrops()
@@ -80,7 +82,9 @@ end
 function growcrops()
 	for x=0,15 do
 		for y=0,15 do
-			mset(x,y,2)
+			if mget(x,y)==3 then--if seed
+				mset(x,y,4)--grow carrot
+			end
 		end
 	end
 end
